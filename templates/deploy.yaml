@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.metadata.name }}
+  name: {{ .Release.Name }}-{{ .Values.metadata.name }}
+spec:
+  replicas: {{.Values.replicaCount}}
+  selector:
+    matchLabels:
+      app: {{ .Values.metadata.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.metadata.name }}
+    spec:
+      containers:
+        - image: 3anany/task1:v2
+          name: {{ .Values.metadata.name }}
+          imagePullPolicy: Always
+          env:
+          - name: iti
+            value: {{.Capabilities.KubeVersion | quote }}
+          ports:
+            - containerPort: 80
+          resources: {}
