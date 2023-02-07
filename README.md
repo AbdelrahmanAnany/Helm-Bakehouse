@@ -1,2 +1,2 @@
 # Helm-Bakehouse
-Automating Bakehouse app deployment using Helm
+Automating Bakehouse webapp deployment using Helm
